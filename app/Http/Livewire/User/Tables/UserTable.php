@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Livewire\User\Tables;
+use App\Models\User;
+use Livewire\Component;
+
+class UserTable extends Component
+{
+    public $users, $name, $email, $password, $user_id;
+    public $isEditMode = false;
+
+    protected $listeners = ['UserRefresh'=>'render'];
+
+
+    public function render()
+    {
+        $this->users = User::all();
+        
+        return view('pages.TodoLivewire.components.User.usertable');
+    }
+
+    public function edit($id)
+    {
+        $this->emit('edit', $id); // Emit user ID to form component
+    }
+
+    public function delete($id)
+    {
+        User::findOrFail($id)->delete();
+        //session()->flash('message', 'User deleted successfully.');
+    }
+}
