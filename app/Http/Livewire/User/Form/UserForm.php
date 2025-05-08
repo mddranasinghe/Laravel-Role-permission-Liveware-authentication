@@ -8,9 +8,11 @@ use Spatie\Permission\Models\Role;
 
 class UserForm extends Component
 {
-    public $users, $name, $email, $password, $user_id, $set_roles,$userq,$roles;
+    public $name, $email, $password, $user_id, $set_roles,$roles ,$s;
     public $isEditMode = false;
     protected $listeners = ['edit'];
+
+
   
 
     public function mount(){
@@ -66,10 +68,16 @@ class UserForm extends Component
 
         $user = User::findOrFail($id);
         $roles=Role::all();
+        
         $this->user_id = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
         $this->isEditMode = true;
+
+        $this->set_roles=$user->getRoleNames();
+
+
+       
         
     }                                         
 

@@ -17,26 +17,41 @@
    
     <div class="mt-2">
         <label>Role :</label>
-        <select  class="form-select" wire:model="set_roles">
+        <select  class="form-select" wire:model="set_roles"  multiple >
 
             @if($isEditMode == false)
 
-            <option> --select option--</option>
+            <option value="">-- Select Role --</option>
             @foreach ($roles as $role )
-            <option value={{ $role->id }}>{{ $role->name }}</option>
+            <option value="{{ $role->id }}">{{ $role->name }}</option>
             @endforeach
 
             @endif
 
             @if($isEditMode == true)
-            
-    
-            @foreach ($roles as $role )
-            <option value={{ $role->name }} {{ $user->hasRole($role->name) ? "selected" : "" }} >{{ $role->name }}</option>
+
+
+            @foreach($roles as $role)
+                <option value="{{ $role->name }}" 
+
+                    @if(is_array($set_roles))
+                        {{ in_array($role->name, $set_roles) ? 'selected' : '' }}
+                    @else
+                        {{ ($set_roles == $role->name) ? 'selected' : '' }}
+                    @endif
+                >
+                    {{ $role->name }}
+                </option>
+
+                
             @endforeach
+                
 
             @endif
+
+
         </select>
+     
     </div>
 
 

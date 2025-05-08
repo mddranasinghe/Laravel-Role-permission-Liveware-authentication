@@ -6,8 +6,7 @@ use Livewire\Component;
 
 class UserTable extends Component
 {
-    public $users, $name, $email, $password, $user_id;
-    public $isEditMode = false;
+    public  $users;
 
     protected $listeners = ['UserRefresh'=>'render'];
 
@@ -17,6 +16,7 @@ class UserTable extends Component
         $this->users = User::all();
         
         return view('pages.TodoLivewire.components.User.usertable');
+        dd($this-users);
     }
 
     public function edit($id)

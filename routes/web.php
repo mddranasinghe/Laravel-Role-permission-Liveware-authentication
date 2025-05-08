@@ -23,7 +23,7 @@ Route::prefix('/todo')->group(function (){
 
 Route::prefix('/todo-livewire')->group(function (){
     Route::get('/',[TodoLiveWireController::class,'index'])->name('todo.livewire');
-    Route::post('/store',[TodoController::class,'store'])->name('todo.store');
+    Route::post('/store',[TodoLiveWireController::class,'store'])->name('todo.store');
    // Route::get('/{task_id}/delete',[TodoController::class,'delete'])->name('todo.delete');
    //Route::get('/{task_id}/done',[TodoController::class,'done'])->name('todo.done');
 });

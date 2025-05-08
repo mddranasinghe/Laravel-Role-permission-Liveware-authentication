@@ -36,6 +36,5 @@
           <button type="submit" class="btn btn-danger">Logout</button>
       </form>
   @endauth
-  
   </div>
   </nav>

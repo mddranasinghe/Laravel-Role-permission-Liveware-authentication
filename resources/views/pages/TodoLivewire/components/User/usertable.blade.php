@@ -31,10 +31,6 @@
 
                     </td>
 
-
-
-                   
-                
            
                     <td class="p-2">
                         @can('role-edit')

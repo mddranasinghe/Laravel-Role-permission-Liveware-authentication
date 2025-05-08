@@ -16,7 +16,7 @@ class AllTable extends Component
     
     public function render()
     {
-        return view('pages.TodoLivewire.components.User.usertable');
+        return view('pages.TodoLivewire.components.table');
     }
     
 
